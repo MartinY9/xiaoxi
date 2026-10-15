@@ -65,7 +65,7 @@ async function report() {
       s = s
         .replace(
           /<title>[^<]*<\/title>/,
-          "<title>霄息 · 合成样例（非真实视频）</title>",
+          "<title>大霄译站 · 合成样例（非真实视频）</title>",
         )
         .replace(
           "</head>",

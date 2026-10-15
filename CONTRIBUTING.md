@@ -1,4 +1,4 @@
-# 参与霄息
+# 参与大霄译站
 
 先运行`npm ci`、`npm run check`和`npm run demo`。项目使用Node.js 24.18以上，CI配置Windows和Ubuntu；远端CI是否通过需以实际运行结果为准。
 

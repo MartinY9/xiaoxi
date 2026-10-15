@@ -39,13 +39,13 @@ def root_directory(raw, initialize=False):
         raise ValueError('Symlinked application marker')
     if initialize:
         if root.exists() and not marker.is_file() and any(root.iterdir()):
-            raise ValueError('Existing nonempty directory has no Xiaoxi marker; refusing to use it')
+            raise ValueError('Existing nonempty directory has no project marker; refusing to use it')
         root.mkdir(parents=True, exist_ok=True)
         if not marker.exists():
             marker.write_text('xiaoxi-static-v1\n', encoding='utf-8')
         root.chmod(0o755)
     if not marker.is_file() or marker.read_text('utf-8') != 'xiaoxi-static-v1\n':
-        raise ValueError('Not an initialized Xiaoxi static directory')
+        raise ValueError('Not an initialized project static directory')
     for name in ['site', 'site/evidence', 'incoming', 'releases']:
         p = root / name
         if p.is_symlink():
