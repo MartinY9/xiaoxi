@@ -1,0 +1,9 @@
+{
+  "host": "example.com",
+  "port": 22,
+  "user": null,
+  "identityFile": null,
+  "knownHostsFile": null,
+  "remoteBase": null,
+  "publicUrl": "https://xiaoxi.example.com/"
+}

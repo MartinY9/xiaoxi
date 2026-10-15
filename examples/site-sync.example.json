@@ -1,0 +1,4 @@
+{
+  "enabled": false,
+  "connectionConfig": "work/deploy.json"
+}

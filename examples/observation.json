@@ -1,0 +1,35 @@
+{
+  "record": {
+    "title": "请填原作品标题",
+    "url": "https://www.douyin.com/video/0000000000000000000",
+    "publishedAt": "2026-01-01T18:00:00+08:00",
+    "sourceType": "unknown",
+    "timeVerified": false,
+    "market": "unknown",
+    "imported": true,
+    "baseline": true,
+    "coverage": "partial",
+    "observations": [
+      {
+        "id": "plant-1",
+        "label": "green_plant",
+        "name": "绿叶盆栽（品种未确认）",
+        "description": "请按真实可见截图填写；这个模板本身不是视频证据。",
+        "kind": "plant",
+        "colors": ["green"],
+        "position": "右侧",
+        "frameIndex": 0,
+        "evidenceTime": 4,
+        "verified": false,
+        "confidence": 0.5
+      }
+    ],
+    "notes": "模板：先核实原链接、页面发布时间、本人原发资格与截图；不能以此占位内容训练。"
+  },
+  "modelEligibility": {
+    "sourceVerified": false,
+    "everyday": false,
+    "coauth": false,
+    "note": "模板尚未核实，默认排除。"
+  }
+}

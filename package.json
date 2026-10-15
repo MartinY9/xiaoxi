@@ -1,0 +1,37 @@
+{
+  "name": "xiaoxi",
+  "version": "0.1.0",
+  "description": "年少不懂李大霄，看懂已是中年人。霄息用AI辅助识别视频中的物品、颜色、摆放与谐音线索，让解读有截图、有证据，再用真实行情验证猜想。",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.18.0"
+  },
+  "scripts": {
+    "init": "node scripts/cli.mjs init",
+    "demo": "node scripts/cli.mjs demo",
+    "import": "node scripts/cli.mjs import",
+    "evidence": "node scripts/cli.mjs evidence",
+    "prices": "node scripts/cli.mjs prices",
+    "market": "node scripts/local-monitor.mjs market",
+    "report": "node scripts/cli.mjs report",
+    "window": "node scripts/publication-window.mjs",
+    "serve": "node scripts/cli.mjs serve",
+    "test": "node --test tests/*.test.mjs",
+    "format": "prettier --write lib scripts tests examples docs README.md NOTICE.md CONTRIBUTING.md SECURITY.md CHANGELOG.md package.json .github",
+    "format:check": "prettier --check lib scripts tests examples docs README.md NOTICE.md CONTRIBUTING.md SECURITY.md CHANGELOG.md package.json .github",
+    "release:check": "node scripts/release-check.mjs",
+    "check": "npm run format:check && npm test && npm run release:check",
+    "site:prepare": "node scripts/publish-site.mjs prepare",
+    "site:check": "node scripts/publish-site.mjs check",
+    "site:publish": "node scripts/publish-site.mjs publish",
+    "site:sync": "node scripts/sync-site.mjs"
+  },
+  "dependencies": {
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  },
+  "homepage": "https://xiaoxi.martin.wiki/"
+}

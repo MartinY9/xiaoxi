@@ -1,0 +1,24 @@
+name: 问题反馈
+description: 请提供使用合成数据的最小复现
+body:
+  - type: markdown
+    attributes:
+      value: 请勿粘贴登录态、授权码、邮箱、私人路径、真实截图或完整运行档案。
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 实际行为与预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤和合成输入
+    validations:
+      required: true
+  - type: input
+    id: runtime
+    attributes:
+      label: 操作系统和Node.js版本
+    validations:
+      required: true

@@ -1,0 +1,19 @@
+{
+  "recordId": "douyin-0000000000000000000",
+  "shots": [
+    {
+      "key": "replace_with_actual_frame_key",
+      "path": "./actual-screenshot.jpg",
+      "frameIndex": 0,
+      "time": 4,
+      "capturedAt": "2026-01-02T10:00:00+08:00"
+    }
+  ],
+  "attachments": [
+    {
+      "observationId": "plant-1",
+      "shotKey": "replace_with_actual_frame_key",
+      "crop": [800, 300, 100, 200]
+    }
+  ]
+}
