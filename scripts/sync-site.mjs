@@ -93,12 +93,6 @@ export async function syncReport({
     }
     const report = await fs.readFile(path.join(root, "public", "report.html"));
     const reportSHA256 = digest(report);
-    if (!force && state.lastSuccess?.reportSHA256 === reportSHA256)
-      return {
-        status: "unchanged",
-        uploaded: false,
-        notice: state.notice?.pending ? state.notice : null,
-      };
     const connectionPath = workspaceFile(root, config.connectionConfig);
     const connection = await readJSON(connectionPath);
     const url = new URL(connection.publicUrl);
@@ -110,6 +104,16 @@ export async function syncReport({
       url.hash
     )
       throw Error("Use a public site URL without credentials");
+    if (
+      !force &&
+      state.lastSuccess?.reportSHA256 === reportSHA256 &&
+      state.lastSuccess.url === url.href
+    )
+      return {
+        status: "unchanged",
+        uploaded: false,
+        notice: state.notice?.pending ? state.notice : null,
+      };
     state.lastAttemptAt = now();
     await saveJSON(statePath, state);
     try {

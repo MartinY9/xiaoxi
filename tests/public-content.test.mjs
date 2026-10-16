@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { publicContentIssues } from "../lib/public-content.mjs";
 test("公开站点链接不属于凭据或私人路径", () => {
   assert.deepEqual(
-    publicContentIssues('<a href="https://xiaoxi.martin.wiki/">在线体验</a>'),
+    publicContentIssues('<a href="https://daxiao.martin.wiki/">在线体验</a>'),
     [],
   );
 });

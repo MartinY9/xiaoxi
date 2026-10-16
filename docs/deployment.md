@@ -1,6 +1,6 @@
 # 本机分析与静态网站部署
 
-在线案例：[大霄译站](https://xiaoxi.martin.wiki/)。这是维护者运行的真实报告，仓库不携带该站点的登录态、截图、训练档案或连接配置。
+在线案例：[大霄译站](https://daxiao.martin.wiki/)。这是维护者运行的真实报告，仓库不携带该站点的登录态、截图、训练档案或连接配置。
 
 ```mermaid
 flowchart LR
@@ -50,7 +50,7 @@ prepare只在work/site-releases生成版本化目录与清单，不联网。publ
 npm run site:sync
 ```
 
-同步包装器以报告SHA-256去重，无变化不连接服务器；有变化才发布，并从publicUrl正常验证HTTPS和页面哈希。不允许携带用户名、密码或查询凭据的URL，也不跟随其他地址的重定向。HTTP地址仅用于尚未启用HTTPS的调试，正式配置建议用HTTPS。
+同步包装器以报告SHA-256和目标URL联合去重；报告内容或目标地址变化时重新发布与核验，两者均未变化时不连接服务器，并从publicUrl正常验证HTTPS和页面哈希。不允许携带用户名、密码或查询凭据的URL，也不跟随其他地址的重定向。HTTP地址仅用于尚未启用HTTPS的调试，正式配置建议用HTTPS。
 
 状态和锁位于work。同步失败保留原成功状态，下次重试；notice.pending表示首次失败或恢复尚待通知。通知适配器实际告知后运行npm run site:sync -- --ack-notice。工具本身不发送邮件，也不创建定时任务。
 

@@ -133,6 +133,44 @@ test("同步无变化不联网，失败保留旧成功记录，恢复需实际�
   await syncReport({ ...opts, ackNotice: true });
   assert.equal((await syncReport(opts)).notice, null);
 });
+test("同一报告更换域名后重新发布核验，再次同步才跳过联网", async (t) => {
+  const { root, write } = await fixture(t);
+  await write("work/site-publish-config.json", {
+    enabled: true,
+    connectionConfig: "work/deploy.json",
+  });
+  await write("work/deploy.json", { publicUrl: "https://old.example.com/" });
+  let published = 0;
+  const fetched = [];
+  const opts = {
+    root,
+    publish: async () => {
+      published++;
+    },
+    fetchPublic: async (url) => {
+      fetched.push(url);
+      return fs.readFile(path.join(root, "public/report.html"));
+    },
+  };
+  assert.equal((await syncReport(opts)).verified, true);
+  await write("work/deploy.json", { publicUrl: "https://new.example.com" });
+  const migrated = await syncReport(opts);
+  assert.equal(migrated.verified, true);
+  assert.equal(migrated.url, "https://new.example.com/");
+  assert.equal(published, 2);
+  assert.deepEqual(fetched, [
+    "https://old.example.com/",
+    "https://new.example.com/",
+  ]);
+  assert.equal((await syncReport(opts)).status, "unchanged");
+  assert.equal(published, 2);
+  assert.equal(fetched.length, 2);
+  await write("work/deploy.json", {
+    publicUrl: "https://user:password@new.example.com/",
+  });
+  await assert.rejects(syncReport(opts), /without credentials/);
+});
+
 test("同步锁与损坏状态不被覆盖，配置不能跳出工作区", async (t) => {
   const { root, write } = await fixture(t);
   await write("work/site-publish-config.json", {
